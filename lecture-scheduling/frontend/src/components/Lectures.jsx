@@ -17,16 +17,16 @@ function Lectures() {
 
   const fetchAll = () => {
     const headers = { Authorization: `Bearer ${token}` }
-    axios.get('http://localhost:5000/api/lectures', { headers }).then(res => setLectures(res.data))
-    axios.get('http://localhost:5000/api/courses', { headers }).then(res => setCourses(res.data))
-    axios.get('http://localhost:5000/api/instructors', { headers }).then(res => setInstructors(res.data))
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/lectures', { headers }).then(res => setLectures(res.data))
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/courses', { headers }).then(res => setCourses(res.data))
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/instructors', { headers }).then(res => setInstructors(res.data))
   }
 
   const handleAdd = async () => {
     if (!course || !instructor || !date || !batchName) return setError('Fill all fields!')
     setError('')
     try {
-      await axios.post('http://localhost:5000/api/lectures',
+      await axios.post('https://lecture-scheduling-backend-tdrq.onrender.com/api/lectures',
         { course, instructor, date, batchName },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -39,7 +39,7 @@ function Lectures() {
   }
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/lectures/${id}`, {
+    await axios.delete(`https://lecture-scheduling-backend-tdrq.onrender.com/api/lectures/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     fetchAll()

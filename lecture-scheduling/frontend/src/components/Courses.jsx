@@ -15,7 +15,7 @@ function Courses() {
   useEffect(() => { fetchCourses() }, [])
 
   const fetchCourses = () => {
-    axios.get('http://localhost:5000/api/courses', {
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/courses', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setCourses(res.data))
       .catch(err => console.log(err))
@@ -32,7 +32,7 @@ function Courses() {
       formData.append('description', description)
       if (image) formData.append('image', image)
 
-      await axios.post('http://localhost:5000/api/courses', formData, {
+      await axios.post('https://lecture-scheduling-backend-tdrq.onrender.com/api/courses', formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
       })
       setName(''); setLevel('Beginner'); setDescription(''); setImage(null)
@@ -46,7 +46,7 @@ function Courses() {
 
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this course?')) return
-    await axios.delete(`http://localhost:5000/api/courses/${id}`, {
+    await axios.delete(`https://lecture-scheduling-backend-tdrq.onrender.com/api/courses/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     fetchCourses()
@@ -86,7 +86,7 @@ function Courses() {
         {courses.map(course => (
           <div key={course._id} style={styles.card}>
             {course.image
-              ? <img src={`http://localhost:5000/uploads/${course.image}`} alt={course.name} style={styles.img} />
+              ? <img src={`https://lecture-scheduling-backend-tdrq.onrender.com/uploads/${course.image}`} alt={course.name} style={styles.img} />
               : <div style={styles.noImg}>No Image</div>
             }
             <div style={styles.cardBody}>

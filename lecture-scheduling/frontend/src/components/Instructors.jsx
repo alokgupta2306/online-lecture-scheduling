@@ -6,7 +6,7 @@ function Instructors() {
   const token = localStorage.getItem('token')
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/instructors', {
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/instructors', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setInstructors(res.data))
       .catch(err => console.log(err))

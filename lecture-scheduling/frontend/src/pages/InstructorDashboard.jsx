@@ -9,7 +9,7 @@ function InstructorDashboard() {
   const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/lectures/my-lectures', {
+    axios.get('https://lecture-scheduling-backend-tdrq.onrender.com/api/lectures/my-lectures', {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => setLectures(res.data))
